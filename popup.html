@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StreamRoute</title><link rel="stylesheet" href="popup.css"></head><body>
+<header><span aria-hidden="true">⇄</span><div><h1>StreamRoute</h1><p>Send player connections through a local proxy.</p></div></header>
+<main>
+  <section class="status"><strong id="status">Reading routing status…</strong><p id="status-detail"></p></section>
+  <p class="note">Requires an existing local SOCKS5/HTTP proxy. Cloudflare HTTPS DNS-only does not provide one. No proxy settings change until you press Enable.</p>
+  <form id="routing-form">
+    <label for="scope">Route through proxy</label><select id="scope"><option value="hosts">Only listed player / CDN hosts</option><option value="browser">All Chrome web traffic</option></select>
+    <div class="fields"><div><label for="scheme">Proxy protocol</label><select id="scheme"><option value="socks5">SOCKS5</option><option value="http">HTTP</option></select></div><div><label for="port">Local proxy port</label><input id="port" type="number" min="1" max="65535" value="40000" required></div></div>
+    <p class="note">Proxy address: <code>127.0.0.1</code>. Use the protocol and port of your local proxy.</p>
+    <div id="hosts-section"><label for="domains">Player / media hosts</label><textarea id="domains" rows="3" spellcheck="false" placeholder="player.example.com&#10;video-cdn.example.com"></textarea><button id="detect" class="secondary" type="button">Find player hosts on this page</button><p class="note">Matching hosts and their subdomains use the proxy in every tab. The page, iframe, and media CDN can use different hosts. Review this list before enabling.</p></div>
+    <button id="enable" type="submit">Enable routing</button>
+  </form>
+  <button id="stop" class="secondary" type="button" disabled>Stop routing</button>
+  <p id="notice" role="status" aria-live="polite"></p>
+  <details><summary>What this does</summary><p>Chrome sends matching web connections to the local proxy instead of directly through your ISP. HTTPS still uses TLS; an organization's proxy may inspect TLS if its policy and trusted certificate enable that. DNS-only cannot carry video traffic; the proxy must forward it through a real tunnel.</p><p>Stop removes only StreamRoute's proxy override and reveals your previous Chrome/system configuration. A stopped or unavailable proxy produces a proxy connection error; matching traffic does not silently fall back to a direct route.</p><p>All Chrome web traffic also covers separate video CDN hosts. It covers proxyable web connections, not every browser protocol or other apps. The local proxy's own limits and server blocks still apply.</p></details>
+</main><script src="routing.js"></script><script src="popup.js"></script></body></html>

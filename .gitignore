@@ -1,0 +1,6 @@
+builds/
+releases/
+validation/
+.local/
+windows/build/
+node_modules/

@@ -1,0 +1,22 @@
+:root { color-scheme: dark; color: #e0ede5; background: #101a16; font: 13px/1.5 system-ui,sans-serif; }
+* { box-sizing: border-box; }
+body { width: 390px; margin: 0; padding: 21px; }
+header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+header span { background: #b4edce; color: #173d28; border-radius: 11px; font-size: 30px; width: 43px; height: 43px; text-align: center; }
+h1 { margin: 0; font-size: 22px; }
+p { margin: 6px 0; color: #a9bdb0; }
+header p { font-size: 11px; }
+.status { border: 1px solid #34503e; border-radius: 10px; background: #17291e; padding: 13px; }
+label { display: block; font-weight: 600; margin: 13px 0 5px; }
+input,select,textarea { width: 100%; border: 1px solid #3a5143; border-radius: 7px; background: #1a2a21; color: #e0ede5; padding: 9px; font: inherit; }
+textarea { resize: vertical; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+button { width: 100%; padding: 10px; margin-top: 13px; border: 0; border-radius: 7px; font: inherit; font-weight: 650; background: #b4edce; color: #143822; cursor: pointer; }
+.secondary { border: 1px solid #45604e; background: transparent; color: #cae6d4; }
+button:disabled { opacity: .45; cursor: default; }
+.note,details { font-size: 12px; }
+.note { margin-top: 10px; }
+#notice { min-height: 20px; color: #d4ebdd; font-size: 12px; }
+details { border-top: 1px solid #34503e; padding-top: 13px; margin-top: 10px; }
+summary { cursor: pointer; }
+:focus-visible { outline: 2px solid #b4edce; outline-offset: 2px; }

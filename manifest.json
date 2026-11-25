@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "StreamRoute — Local Video Proxy",
+  "version": "0.1.0",
+  "minimum_chrome_version": "119",
+  "description": "Route selected player/CDN hosts, or Chrome traffic, through your existing local SOCKS5 or HTTP proxy.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "optional_permissions": ["proxy"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "StreamRoute" }
+}
